@@ -28,12 +28,14 @@ Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
     Route::delete('/{item}/destroy', [PostController::class, 'deletePost'])->name('delete');
 });
 
-Route::group(['prefix' => 'student', 'as' => 'student.'], function () {
-    Route::get('/', [StudentController::class, 'index'])->name('index');
-    Route::get('/create', [StudentController::class, 'create'])->name('create');
-    Route::post('store', [StudentController::class, 'store'])->name('store');
-    Route::get('/{item}/show', [StudentController::class, 'show'])->name('show');
-    Route::get('/{item}/edit', [StudentController::class, 'edit'])->name('edit');
-    Route::put('/{item}/update', [StudentController::class, 'update'])->name('update');
-    Route::delete('/{item}/destroy', [StudentController::class, 'destroy'])->name('destroy');
+Route::controller(StudentController::class)
+    ->group(['prefix' => 'student', 'as' => 'student.'],
+    function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('store', 'store')->name('store');
+        Route::get('/{item}/show', 'show')->name('show');
+        Route::get('/{item}/edit', 'edit')->name('edit');
+        Route::put('/{item}/update', 'update')->name('update');
+        Route::delete('/{item}/destroy', 'destroy')->name('destroy');
 });
