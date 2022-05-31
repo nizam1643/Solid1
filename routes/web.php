@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Student1Controller;
 use App\Http\Controllers\StudentController;
@@ -41,3 +42,10 @@ Route::controller(StudentController::class)
         Route::put('/{item}/update', 'update')->name('update');
         Route::delete('/{item}/destroy', 'destroy')->name('destroy');
 });
+
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
+Route::get('registration', [AuthController::class, 'registration'])->name('register');
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware('secureUser')->name('dashboard');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
