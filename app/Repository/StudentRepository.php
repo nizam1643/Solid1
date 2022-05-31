@@ -13,7 +13,6 @@ class StudentRepository implements StudentInterface
     protected $student = null;
 
     public function index(){
-        return Student::get();
     }
 
     public function indexAPI($collection = []){

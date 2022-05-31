@@ -27,8 +27,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = $this->student->index();
-        return view('student.index', compact('students'));
+        return view('student.index3');
     }
 
     public function indexAPI(Request $request)
