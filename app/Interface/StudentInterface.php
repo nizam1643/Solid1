@@ -10,13 +10,13 @@ interface StudentInterface
 
     public function create();
 
-    public function store();
+    public function store($request);
 
     public function show($id);
 
     public function edit($id);
 
-    public function update($id);
+    public function update($id, $request);
 
     public function destroy($id);
 }

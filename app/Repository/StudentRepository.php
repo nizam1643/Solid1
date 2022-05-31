@@ -6,6 +6,7 @@ use App\Http\Resources\StudentResource;
 use App\Interface\StudentInterface;
 use App\Models\Student;
 use Exception;
+use Illuminate\Http\Request;
 
 class StudentRepository implements StudentInterface
 {
@@ -29,11 +30,11 @@ class StudentRepository implements StudentInterface
 
     }
 
-    public function store($collection = []){
+    public function store($request){
         $student = new Student;
-        $student->name = $collection['name'];
-        $student->studentID = $collection['studentID'];
-        $student->email = $collection['email'];
+        $student->name = $request->name;
+        $student->studentID = $request->studentID;
+        $student->email = $request->email;
         $student->save();
         return $student;
     }
@@ -46,11 +47,11 @@ class StudentRepository implements StudentInterface
         return Student::find($id);
     }
 
-    public function update($id, $collection = []){
+    public function update($id, $request){
         $student = Student::find($id);
-        $student->name = $collection['name'];
-        $student->studentID = $collection['studentID'];
-        $student->email = $collection['email'];
+        $student->name = $request->name;
+        $student->studentID = $request->studentID;
+        $student->email = $request->email;
         $student->save();
         return $student;
     }
