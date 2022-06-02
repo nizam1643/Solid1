@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\Student1Controller;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -49,3 +50,12 @@ Route::get('registration', [AuthController::class, 'registration'])->name('regis
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
 Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware('secureUser')->name('dashboard');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::controller(SendEmailController::class)
+    ->prefix('email')
+    ->as('email.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/sendEmail', 'sendEmail')->name('sendEmail');
+        Route::get('/{id}/approved', 'approved')->name('approved');
+});

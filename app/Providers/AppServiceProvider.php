@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Interface\PostInterface;
-use App\Interface\StudentInterface;
+use App\Interface\Send;
+use App\Interface\SendEmailInterface;
 use App\Repository\PostRepository;
+use App\Repository\SendEmailRepository;
 use App\Repository\StudentRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(PostInterface::class, PostRepository::class);
         $this->app->bind(StudentInterface::class, StudentRepository::class);
+        $this->app->bind(SendEmailInterface::class, SendEmailRepository::class);
     }
 
     /**
